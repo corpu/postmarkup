@@ -22,11 +22,16 @@ Topic :: Text Processing :: Markup
 from setuptools import setup
 import sys
 
+try:
+    from distutils.command.build_py import build_py_2to3 as build_py
+except ImportError:
+    from distutils.command.build_py import build_py
+
 doclines = __doc__.split("\n")
 
-extra = {}
-if sys.version_info >= (3,):
-    extra["use_2to3"] = True
+# extra = {}
+# if sys.version_info >= (3,):
+#     extra["use_2to3"] = True
 
 setup(install_requires=['setuptools'],
       name='postmarkup',
@@ -41,4 +46,5 @@ setup(install_requires=['setuptools'],
       long_description='\n'.join(doclines[2:]),
       packages=["postmarkup"],
       classifiers=classifiers.splitlines(),
+      cmdclass={'build_py': build_py},
       **extra)
