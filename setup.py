@@ -46,5 +46,4 @@ setup(install_requires=['setuptools'],
       long_description='\n'.join(doclines[2:]),
       packages=["postmarkup"],
       classifiers=classifiers.splitlines(),
-      cmdclass={'build_py': build_py},
-      **extra)
+      cmdclass={'build_py': build_py})
